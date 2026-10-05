@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nara — Mundo moldeable</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,680&family=Outfit:wght@400;560&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="view"></div>
+    <header class="top">
+      <p class="eyebrow">Agente visible</p>
+      <h1>Nara</h1>
+      <p class="lede">Crea el mundo y moldéalo. También puedes cambiarme a mí.</p>
+      <p class="seed" id="seed-label"></p>
+    </header>
+    <p class="speech" id="speech" aria-live="polite"></p>
+    <div class="toolbar" role="toolbar" aria-label="Pinceles del terreno">
+      <button type="button" class="tool is-on" data-mode="raise">Elevar</button>
+      <button type="button" class="tool" data-mode="lower">Hundir</button>
+      <button type="button" class="tool" data-mode="smooth">Alisar</button>
+      <button type="button" class="tool" data-mode="water">Agua</button>
+      <button type="button" class="tool" data-mode="forest">Bosque</button>
+      <button type="button" class="tool" data-mode="sand">Arena</button>
+      <button type="button" class="tool" data-mode="snow">Nieve</button>
+      <button type="button" class="tool" data-mode="rock">Roca</button>
+      <label class="slider">Radio <input id="brush-radius" type="range" min="2" max="12" step="0.5" value="5" /></label>
+      <label class="slider">Fuerza <input id="brush-strength" type="range" min="0.35" max="1.4" step="0.05" value="0.8" /></label>
+    </div>
+    <aside class="panel">
+      <div class="who">
+        <div class="face" id="face" aria-hidden="true"><span></span><span></span></div>
+        <div>
+          <strong>Nara</strong>
+          <p>Arrastra el terreno. Clic derecho para mirar alrededor.</p>
+        </div>
+      </div>
+      <div class="log" id="log"></div>
+      <form id="ask">
+        <label class="sr" for="prompt">Pedirle algo a Nara</label>
+        <input id="prompt" type="text" maxlength="180" placeholder="Un lago en el centro, o hazte dorada" autocomplete="off" />
+        <button type="submit" id="send">Moldear</button>
+      </form>
+      <div class="shape">
+        <p>Moldear a Nara</p>
+        <label class="slider">Altura <input id="agent-height" type="range" min="0.55" max="2.15" step="0.01" value="1" /></label>
+        <label class="slider">Ancho <input id="agent-width" type="range" min="0.6" max="1.85" step="0.01" value="1" /></label>
+        <div class="swatches" id="swatches">
+          <button type="button" data-color="#d86b45" class="is-on" style="--swatch:#d86b45" aria-label="Arcilla"></button>
+          <button type="button" data-color="#e2a23a" style="--swatch:#e2a23a" aria-label="Dorada"></button>
+          <button type="button" data-color="#3c7ea8" style="--swatch:#3c7ea8" aria-label="Azul"></button>
+          <button type="button" data-color="#3f8f62" style="--swatch:#3f8f62" aria-label="Verde"></button>
+          <button type="button" data-color="#c44b3c" style="--swatch:#c44b3c" aria-label="Roja"></button>
+          <button type="button" data-color="#7a5ea8" style="--swatch:#7a5ea8" aria-label="Violeta"></button>
+          <button type="button" data-color="#f4efe6" style="--swatch:#f4efe6" aria-label="Blanca"></button>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="button" id="look">Mírame</button>
+        <button type="button" id="new-world">Nuevo mundo</button>
+        <button type="button" id="undo">Deshacer</button>
+      </div>
+    </aside>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

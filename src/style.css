@@ -1,0 +1,234 @@
+:root {
+  color: #241c16;
+  background: #c98562;
+  font-family: Outfit, "Avenir Next", "Segoe UI", sans-serif;
+  --paper: rgba(247, 241, 230, 0.92);
+  --ink: #241c16;
+  --terra: #c4552a;
+  --line: rgba(36, 28, 22, 0.14);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+button, input { font: inherit; color: inherit; }
+
+#view {
+  position: fixed;
+  inset: 0;
+}
+
+#view canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+.top, .speech, .toolbar, .panel {
+  position: fixed;
+  z-index: 2;
+}
+
+.top {
+  top: 18px;
+  left: 20px;
+  max-width: 280px;
+  text-shadow: 0 1px 0 rgba(255, 246, 232, 0.35);
+}
+
+.eyebrow {
+  margin: 0 0 2px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+h1 {
+  margin: 0;
+  font-family: Fraunces, Palatino, Georgia, serif;
+  font-size: 52px;
+  font-weight: 680;
+  line-height: 0.9;
+}
+
+.lede, .seed { margin: 8px 0 0; font-size: 14px; line-height: 1.35; }
+
+.speech {
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(460px, calc(100% - 420px));
+  margin: 0;
+  padding: 12px 16px;
+  border-radius: 16px;
+  background: var(--paper);
+  box-shadow: 0 12px 30px rgba(48, 24, 8, 0.16);
+  font-family: Fraunces, Palatino, Georgia, serif;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.toolbar {
+  left: 16px;
+  bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: min(640px, calc(100% - 380px));
+  padding: 10px;
+  border-radius: 18px;
+  background: var(--paper);
+  box-shadow: 0 12px 30px rgba(48, 24, 8, 0.16);
+}
+
+.tool, .actions button, #send {
+  border: 1px solid var(--line);
+  background: transparent;
+  border-radius: 999px;
+  padding: 7px 12px;
+  cursor: pointer;
+}
+
+.tool.is-on, .swatches .is-on, .actions button:hover, .tool:hover, #send:hover {
+  background: #241c16;
+  color: #f7f1e6;
+  border-color: #241c16;
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  min-width: 140px;
+}
+
+.slider input { width: 88px; accent-color: var(--terra); }
+
+.panel {
+  right: 16px;
+  bottom: 16px;
+  width: 320px;
+  max-height: calc(100% - 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 22px;
+  background: var(--paper);
+  box-shadow: 0 18px 40px rgba(48, 24, 8, 0.2);
+  overflow: auto;
+}
+
+.who {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.who p, .shape p { margin: 2px 0 0; font-size: 13px; line-height: 1.35; }
+
+.face {
+  width: 54px;
+  height: 54px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--nara, #d86b45);
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
+  box-shadow: inset 0 -8px 0 rgba(0, 0, 0, 0.12);
+}
+
+.face span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #1b1612;
+  animation: blink 5s infinite;
+}
+
+.log {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 48px;
+}
+
+.log p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.35;
+  opacity: 0.75;
+}
+
+#ask { display: flex; gap: 8px; }
+
+#prompt {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  padding: 8px 12px;
+}
+
+.shape { display: flex; flex-direction: column; gap: 8px; }
+
+.swatches { display: flex; gap: 6px; }
+
+.swatches button {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background: var(--swatch);
+  box-shadow: 0 0 0 1px rgba(36, 28, 22, 0.25);
+  padding: 0;
+  cursor: pointer;
+}
+
+.actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+@media (max-width: 800px) {
+  .top { max-width: 46vw; }
+  h1 { font-size: 36px; }
+  .speech {
+    top: auto;
+    bottom: 248px;
+    width: calc(100% - 24px);
+    left: 12px;
+    transform: none;
+  }
+  .toolbar, .panel {
+    left: 8px;
+    right: 8px;
+    width: auto;
+  }
+  .toolbar { bottom: 8px; }
+  .panel { bottom: 118px; max-height: 34vh; }
+}
+
+@keyframes blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  96% { transform: scaleY(0.15); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .face span { animation: none; }
+}
